@@ -1,0 +1,21 @@
+{
+  "name": "inventory-management-cli",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Pho3nyxX/inventory-management-cli#readme",
+  "bugs": {
+    "url": "https://github.com/Pho3nyxX/inventory-management-cli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pho3nyxX/inventory-management-cli.git"
+  },
+  "license": "ISC",
+  "author": "Pho3nyxX",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  }
+}
