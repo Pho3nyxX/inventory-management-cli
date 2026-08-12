@@ -19,7 +19,11 @@ async function showMenu() {
                 value: "view"
             },
             {
-                name: "4. Exit",
+                name: "4. View Item Details",
+                value: "details"
+            },
+            {
+                name: "5. Exit",
                 value: "exit"
             }
         ]

@@ -1,6 +1,6 @@
 import { input } from "@inquirer/prompts";
 import showMenu from "./menu.js";
-import { addItem, removeItem, viewInventory } from "./inventory.js";
+import { addItem, removeItem, viewInventory, viewItemDetails } from "./inventory.js";
 
 async function main() {
     let running = true;
@@ -48,6 +48,24 @@ async function main() {
                     console.log(`${index + 1}. ${item.getInfo()}`);
                 });
 
+                console.log();
+            }
+        }
+
+        if (choice === "details") {
+            const name = await input({
+                message: "Enter the name of the item:"
+            });
+
+            const item = viewItemDetails(name);
+
+            if (!item) {
+                console.log(`\n${name} was not found in your inventory.`);
+            } else {
+                console.log("\n=== Item Details ===");
+                console.log(`Name: ${item.name}`);
+                console.log(`Type: ${item.type}`);
+                console.log(`Quantity: ${item.quantity}`);
                 console.log();
             }
         }

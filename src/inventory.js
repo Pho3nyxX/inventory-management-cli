@@ -32,9 +32,15 @@ function viewInventory() {
     return inventory;
 }
 
+function viewItemDetails(name){
+    const item = inventory.find(item => item.name === name);
+    return item;
+}
+
 export {
     inventory,
     addItem,
     removeItem,
-    viewInventory
+    viewInventory,
+    viewItemDetails
 };
