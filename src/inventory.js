@@ -28,8 +28,13 @@ function removeItem(name) {
     return true;
 }
 
+function viewInventory() {
+    return inventory;
+}
+
 export {
     inventory,
     addItem,
-    removeItem
+    removeItem,
+    viewInventory
 };

@@ -1,6 +1,6 @@
 import { input } from "@inquirer/prompts";
 import showMenu from "./menu.js";
-import { addItem, removeItem } from "./inventory.js";
+import { addItem, removeItem, viewInventory } from "./inventory.js";
 
 async function main() {
     let running = true;
@@ -33,6 +33,22 @@ async function main() {
                 console.log(`\nRemoved: ${name}\n`);
             } else {
                 console.log(`\n${name} was not found in your inventory.`);
+            }
+        }
+
+        if (choice === "view") {
+            const items = viewInventory();
+
+            if (items.length === 0) {
+                console.log("\nYour inventory is empty.");
+            } else {
+                console.log("\n=== Inventory ===");
+
+                items.forEach((item, index) => {
+                    console.log(`${index + 1}. ${item.getInfo()}`);
+                });
+
+                console.log();
             }
         }
 
