@@ -1,10 +1,25 @@
+import { input } from "@inquirer/prompts";
 import showMenu from "./menu.js";
+import { addItem } from "./inventory.js";
 
-const choice = await showMenu();
+async function main() {
+    const choice = await showMenu();
+    
+    if (choice === "add") {
+        const name = await input({
+            message: "Enter item name:"
+        });
 
-if (choice === "add") {
-    console.log(`\nYou selected: ${choice}`);
-    // add item
-} else {
-    console.log("\n👋 Until next time!")
+        const type = await input({
+            message: "Enter item type:"
+        });
+
+        const item = addItem(name, type);
+
+        console.log(`\nAdded: ${item.getInfo()}`);
+    } else {
+        console.log("\n👋 Until next time!")
+    }
 }
+
+main();
