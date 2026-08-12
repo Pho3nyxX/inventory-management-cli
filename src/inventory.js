@@ -16,7 +16,20 @@ function addItem(name, type) {
     return item;
 }
 
+function removeItem(name) {
+    const itemIndex = inventory.findIndex(item => item.name === name);
+
+    if (itemIndex === -1) {
+        return false;
+    }
+
+    inventory.splice(itemIndex, 1);
+
+    return true;
+}
+
 export {
     inventory,
-    addItem
+    addItem,
+    removeItem
 };

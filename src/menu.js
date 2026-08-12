@@ -11,7 +11,11 @@ async function showMenu() {
                 value: "add"
             },
             {
-                name: "2. Exit",
+                name: "2. Remove Item",
+                value: "remove"
+            },
+            {
+                name: "3. Exit",
                 value: "exit"
             }
         ]
