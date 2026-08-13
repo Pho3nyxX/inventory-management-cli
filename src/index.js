@@ -17,7 +17,11 @@ async function main() {
                 message: "Enter item type:"
             });
 
-            const item = addItem(name, type);
+            const weight = await input({
+                message: "Enter item weight:"
+            });
+
+            const item = addItem(name, type, Number(weight));
 
             console.log(`\nAdded: ${item.getInfo()}\n`);
         }
@@ -66,6 +70,7 @@ async function main() {
                 console.log(`Name: ${item.name}`);
                 console.log(`Type: ${item.type}`);
                 console.log(`Quantity: ${item.quantity}`);
+                console.log(`Weight: ${item.weight}`);
                 console.log();
             }
         }
@@ -98,7 +103,7 @@ async function main() {
 
             console.log();
         }
-        
+
         if (choice === "unequip") {
             const unequipped = unequipWeapon();
 

@@ -1,10 +1,10 @@
 const inventory = [];
 let currentWeapon = null;
 
-function addItem(name, type) {
+function addItem(name, type, weight) {
     const existingItem = inventory.find(item => item.name === name);
 
-    if(existingItem){
+    if (existingItem) {
         existingItem.quantity++;
         return existingItem;
     }
@@ -13,9 +13,10 @@ function addItem(name, type) {
         name,
         type,
         quantity: 1,
+        weight,
 
         getInfo() {
-            return `${this.name} (${this.type})`;
+            return `${this.name} (${this.type}) - ${this.weight}kg`;
         }
     };
 
@@ -40,17 +41,17 @@ function viewInventory() {
     return inventory;
 }
 
-function viewItemDetails(name){
+function viewItemDetails(name) {
     const item = inventory.find(item => item.name === name);
     return item;
 }
 
-function selectWeapon(name){
+function selectWeapon(name) {
     const weapon = inventory.find(item => {
         return item.name === name && item.type === "weapon";
     });
 
-    if(!weapon){
+    if (!weapon) {
         return false;
     }
 
@@ -59,12 +60,12 @@ function selectWeapon(name){
     return true;
 }
 
-function viewCurrentWeapon(){
+function viewCurrentWeapon() {
     return currentWeapon;
 }
 
-function unequipWeapon(){
-    if(!currentWeapon){
+function unequipWeapon() {
+    if (!currentWeapon) {
         return false;
     }
 
