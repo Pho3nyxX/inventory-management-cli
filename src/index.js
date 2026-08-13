@@ -1,6 +1,6 @@
 import { input } from "@inquirer/prompts";
 import showMenu from "./menu.js";
-import { addItem, removeItem, viewInventory, viewItemDetails } from "./inventory.js";
+import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon } from "./inventory.js";
 
 async function main() {
     let running = true;
@@ -67,6 +67,20 @@ async function main() {
                 console.log(`Type: ${item.type}`);
                 console.log(`Quantity: ${item.quantity}`);
                 console.log();
+            }
+        }
+
+        if (choice === "select") {
+            const name = await input({
+                message: "Enter the name of the weapon:"
+            });
+
+            const selected = selectWeapon(name);
+
+            if (selected) {
+                console.log(`\n${name} selected.\n`);
+            } else {
+                console.log(`\n${name} is not a weapon in your inventory.\n`);
             }
         }
 

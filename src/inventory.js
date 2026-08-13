@@ -1,4 +1,5 @@
 const inventory = [];
+let currentWeapon = null;
 
 function addItem(name, type) {
     const existingItem = inventory.find(item => item.name === name);
@@ -7,7 +8,7 @@ function addItem(name, type) {
         existingItem.quantity++;
         return existingItem;
     }
-    
+
     const item = {
         name,
         type,
@@ -44,10 +45,25 @@ function viewItemDetails(name){
     return item;
 }
 
+function selectWeapon(name){
+    const weapon = inventory.find(item => {
+        return item.name === name && item.type === "weapon";
+    });
+
+    if(!weapon){
+        return false;
+    }
+
+    currentWeapon = weapon;
+
+    return true;
+}
+
 export {
     inventory,
     addItem,
     removeItem,
     viewInventory,
-    viewItemDetails
+    viewItemDetails,
+    selectWeapon
 };

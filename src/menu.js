@@ -23,7 +23,11 @@ async function showMenu() {
                 value: "details"
             },
             {
-                name: "5. Exit",
+                name: "5. Select Weapon",
+                value: "select"
+            },
+            {
+                name: "6. Exit",
                 value: "exit"
             }
         ]
