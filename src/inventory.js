@@ -1,4 +1,5 @@
 const inventory = [];
+const MAX_CARRY_WEIGHT = 20;
 let currentWeapon = null;
 
 function addItem(name, type, weight) {
@@ -74,6 +75,10 @@ function unequipWeapon() {
     return true;
 }
 
+function getMaxCarryWeight() {
+    return MAX_CARRY_WEIGHT;
+}
+
 export {
     inventory,
     addItem,
@@ -82,5 +87,6 @@ export {
     viewItemDetails,
     selectWeapon,
     viewCurrentWeapon,
-    unequipWeapon
+    unequipWeapon,
+    getMaxCarryWeight
 };

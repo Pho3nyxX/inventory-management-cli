@@ -1,6 +1,6 @@
 import { input } from "@inquirer/prompts";
 import showMenu from "./menu.js";
-import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon, viewCurrentWeapon, unequipWeapon } from "./inventory.js";
+import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon, viewCurrentWeapon, unequipWeapon, getMaxCarryWeight } from "./inventory.js";
 
 async function main() {
     let running = true;
@@ -43,17 +43,19 @@ async function main() {
         if (choice === "view") {
             const items = viewInventory();
 
-            if (items.length === 0) {
-                console.log("\nYour inventory is empty.\n");
-            } else {
-                console.log("\n=== Inventory ===");
+            console.log("\n=== Inventory ===");
 
+            if (items.length === 0) {
+                console.log("Your inventory is empty.\n");
+            } else {
                 items.forEach((item, index) => {
                     console.log(`${index + 1}. ${item.getInfo()}`);
                 });
-
-                console.log();
             }
+
+            console.log("--------------------------------");
+
+            console.log(`\nMaximum Carry Weight: ${getMaxCarryWeight()}kg\n`);
         }
 
         if (choice === "details") {
