@@ -1,6 +1,6 @@
 import { input } from "@inquirer/prompts";
 import showMenu from "./menu.js";
-import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon, viewCurrentWeapon } from "./inventory.js";
+import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon, viewCurrentWeapon, unequipWeapon } from "./inventory.js";
 
 async function main() {
     let running = true;
@@ -84,10 +84,6 @@ async function main() {
             }
         }
 
-        if (choice === "exit") {
-            running = false;
-        }
-
         if (choice === "current") {
             const weapon = viewCurrentWeapon();
 
@@ -101,6 +97,20 @@ async function main() {
             }
 
             console.log();
+        }
+        
+        if (choice === "unequip") {
+            const unequipped = unequipWeapon();
+
+            if (unequipped) {
+                console.log("\nWeapon unequipped.\n");
+            } else {
+                console.log("\nNo weapon is currently equipped.\n");
+            }
+        }
+
+        if (choice === "exit") {
+            running = false;
         }
     }
 

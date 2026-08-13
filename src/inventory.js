@@ -63,6 +63,16 @@ function viewCurrentWeapon(){
     return currentWeapon;
 }
 
+function unequipWeapon(){
+    if(!currentWeapon){
+        return false;
+    }
+
+    currentWeapon = null;
+
+    return true;
+}
+
 export {
     inventory,
     addItem,
@@ -70,5 +80,6 @@ export {
     viewInventory,
     viewItemDetails,
     selectWeapon,
-    viewCurrentWeapon
+    viewCurrentWeapon,
+    unequipWeapon
 };

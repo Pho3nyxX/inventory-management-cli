@@ -31,6 +31,10 @@ async function showMenu() {
                 value: "current"
             },
             {
+                name: "7. Unequip Weapon",
+                value: "unequip"
+            },
+            {
                 name: "Exit",
                 value: "exit"
             }
