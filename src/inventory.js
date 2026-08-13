@@ -59,11 +59,16 @@ function selectWeapon(name){
     return true;
 }
 
+function viewCurrentWeapon(){
+    return currentWeapon;
+}
+
 export {
     inventory,
     addItem,
     removeItem,
     viewInventory,
     viewItemDetails,
-    selectWeapon
+    selectWeapon,
+    viewCurrentWeapon
 };

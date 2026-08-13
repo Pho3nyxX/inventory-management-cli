@@ -27,7 +27,11 @@ async function showMenu() {
                 value: "select"
             },
             {
-                name: "6. Exit",
+                name: "6. View Current Weapon",
+                value: "current"
+            },
+            {
+                name: "Exit",
                 value: "exit"
             }
         ]

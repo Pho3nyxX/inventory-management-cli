@@ -1,6 +1,6 @@
 import { input } from "@inquirer/prompts";
 import showMenu from "./menu.js";
-import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon } from "./inventory.js";
+import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon, viewCurrentWeapon } from "./inventory.js";
 
 async function main() {
     let running = true;
@@ -40,7 +40,7 @@ async function main() {
             const items = viewInventory();
 
             if (items.length === 0) {
-                console.log("\nYour inventory is empty.");
+                console.log("\nYour inventory is empty.\n");
             } else {
                 console.log("\n=== Inventory ===");
 
@@ -86,6 +86,21 @@ async function main() {
 
         if (choice === "exit") {
             running = false;
+        }
+
+        if (choice === "current") {
+            const weapon = viewCurrentWeapon();
+
+            if (!weapon) {
+                console.log("\nNo weapon is currently selected.\n");
+            } else {
+                console.log("\n=== Current Weapon ===");
+                console.log(`Name: ${weapon.name}`);
+                console.log(`Type: ${weapon.type}`);
+                console.log(`Quantity: ${weapon.quantity}`);
+            }
+
+            console.log();
         }
     }
 
