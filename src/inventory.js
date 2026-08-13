@@ -1,6 +1,13 @@
 const inventory = [];
 
 function addItem(name, type) {
+    const existingItem = inventory.find(item => item.name === name);
+
+    if(existingItem){
+        existingItem.quantity++;
+        return existingItem;
+    }
+    
     const item = {
         name,
         type,
