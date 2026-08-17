@@ -32,7 +32,11 @@ async function main() {
                 Number(quantity)
             );
 
-            console.log(`\nAdded: ${item.getInfo()}\n`);
+            if (!item) {
+                console.log("\nCannot add item. Weight limit exceeded.\n");
+            } else {
+                console.log(`\nAdded: ${item.getInfo()}`);
+            }
         }
 
         if (choice === "remove") {
