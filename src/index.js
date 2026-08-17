@@ -1,6 +1,6 @@
 import { input } from "@inquirer/prompts";
 import showMenu from "./menu.js";
-import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon, viewCurrentWeapon, unequipWeapon, getMaxCarryWeight } from "./inventory.js";
+import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon, viewCurrentWeapon, unequipWeapon, getMaxCarryWeight, getCurrentWeight } from "./inventory.js";
 
 async function main() {
     let running = true;
@@ -54,8 +54,8 @@ async function main() {
             }
 
             console.log("--------------------------------");
-
-            console.log(`\nMaximum Carry Weight: ${getMaxCarryWeight()}kg\n`);
+            console.log(`\nCurrent Weight: ${getCurrentWeight()}kg`);
+            console.log(`Maximum Carry Weight: ${getMaxCarryWeight()}kg\n`);
         }
 
         if (choice === "details") {

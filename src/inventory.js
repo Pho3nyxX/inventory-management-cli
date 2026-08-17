@@ -79,6 +79,16 @@ function getMaxCarryWeight() {
     return MAX_CARRY_WEIGHT;
 }
 
+function getCurrentWeight(){
+    let totalWeight = 0;
+
+    inventory.forEach(item => {
+        totalWeight += item.weight * item.quantity;
+    })
+
+    return totalWeight;
+}
+
 export {
     inventory,
     addItem,
@@ -88,5 +98,6 @@ export {
     selectWeapon,
     viewCurrentWeapon,
     unequipWeapon,
-    getMaxCarryWeight
+    getMaxCarryWeight,
+    getCurrentWeight
 };
