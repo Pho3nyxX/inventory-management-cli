@@ -21,7 +21,16 @@ async function main() {
                 message: "Enter item weight:"
             });
 
-            const item = addItem(name, type, Number(weight));
+            const quantity = await input({
+                message: "Enter item quantity:"
+            });
+
+            const item = addItem(
+                name,
+                type,
+                Number(weight),
+                Number(quantity)
+            );
 
             console.log(`\nAdded: ${item.getInfo()}\n`);
         }
