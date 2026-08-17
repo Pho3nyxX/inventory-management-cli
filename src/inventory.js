@@ -23,7 +23,7 @@ function addItem(name, type, weight, quantity) {
         weight,
 
         getInfo() {
-            return `${this.name} (${this.type}) x${this.quantity} - ${this.weight}kg each \n`;
+            return `${this.name} (${this.type}) x${this.quantity} - ${this.weight}kg each`;
         }
     };
 
@@ -99,6 +99,12 @@ function getRemainingCapacity(){
     return MAX_CARRY_WEIGHT - getCurrentWeight();
 }
 
+function searchInventory(searchTerm) {
+    return inventory.filter(item =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+}
+
 export {
     inventory,
     addItem,
@@ -110,5 +116,6 @@ export {
     unequipWeapon,
     getMaxCarryWeight,
     getCurrentWeight,
-    getRemainingCapacity
+    getRemainingCapacity,
+    searchInventory
 };

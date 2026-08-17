@@ -19,19 +19,23 @@ async function showMenu() {
                 value: "view"
             },
             {
-                name: "4. View Item Details",
+                name: "4. Search Inventory",
+                value: "search"
+            },
+            {
+                name: "5. View Item Details",
                 value: "details"
             },
             {
-                name: "5. Select Weapon",
+                name: "6. Select Weapon",
                 value: "select"
             },
             {
-                name: "6. View Current Weapon",
+                name: "7. View Current Weapon",
                 value: "current"
             },
             {
-                name: "7. Unequip Weapon",
+                name: "8. Unequip Weapon",
                 value: "unequip"
             },
             {

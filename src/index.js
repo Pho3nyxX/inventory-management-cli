@@ -1,6 +1,6 @@
 import { input } from "@inquirer/prompts";
 import showMenu from "./menu.js";
-import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon, viewCurrentWeapon, unequipWeapon, getMaxCarryWeight, getCurrentWeight, getRemainingCapacity } from "./inventory.js";
+import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon, viewCurrentWeapon, unequipWeapon, getMaxCarryWeight, getCurrentWeight, getRemainingCapacity, searchInventory } from "./inventory.js";
 
 async function main() {
     let running = true;
@@ -71,6 +71,25 @@ async function main() {
             console.log(`Maximum Carry Weight: ${getMaxCarryWeight()}kg`)
             console.log(`Remaining Capacity: ${getRemainingCapacity()}kg`);
             console.log("--------------------------------\n");
+        }
+
+        if (choice === "search") {
+            const searchTerm = await input({
+                message: "Enter item name to search:"
+            });
+
+            const results = searchInventory(searchTerm);
+
+            if (results.length === 0) {
+                console.log(`\nNo items found matching "${searchTerm}".\n`);
+            } else {
+                console.log(`\n=== Search Results ===`);
+
+                results.forEach((item, index) => {
+                    console.log(`${index + 1}. ${item.getInfo()}`);
+                });
+                console.log();
+            }
         }
 
         if (choice === "details") {
