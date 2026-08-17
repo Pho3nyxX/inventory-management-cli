@@ -89,6 +89,10 @@ function getCurrentWeight(){
     return totalWeight;
 }
 
+function getRemainingCapacity(){
+    return MAX_CARRY_WEIGHT - getCurrentWeight();
+}
+
 export {
     inventory,
     addItem,
@@ -99,5 +103,6 @@ export {
     viewCurrentWeapon,
     unequipWeapon,
     getMaxCarryWeight,
-    getCurrentWeight
+    getCurrentWeight,
+    getRemainingCapacity
 };
