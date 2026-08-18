@@ -40,6 +40,14 @@ async function main() {
                 ]
             });
 
+            let defense = 0;
+
+            if (type === ITEM_TYPES.ARMOR) {
+                defense = Number(await input({
+                    message: "Enter armor defense:"
+                }));
+            }
+
             const weight = await input({
                 message: "Enter item weight:"
             });
@@ -52,7 +60,8 @@ async function main() {
                 name,
                 type,
                 Number(weight),
-                Number(quantity)
+                Number(quantity),
+                defense
             );
 
             if (!item) {
@@ -129,9 +138,14 @@ async function main() {
                 console.log(`Name: ${item.name}`);
                 console.log(`Type: ${item.type}`);
                 console.log(`Quantity: ${item.quantity}`);
-                console.log(`Weight: ${item.weight}`);
-                console.log();
+                console.log(`Weight: ${item.weight}kg`);
             }
+            
+            if(item.type === ITEM_TYPES.ARMOR){
+                console.log(`Defense: ${item.defense}`);
+            }
+
+            console.log();
         }
 
         if (choice === "select") {

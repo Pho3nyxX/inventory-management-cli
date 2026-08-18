@@ -4,7 +4,7 @@ console.log("Welcome to Inventory Management CLI\n");
 
 async function showMenu() {
     const answer = await select({
-        message: "What would you like to do?",
+        message: "\nWhat would you like to do?",
         choices: [
             {
                 name: "1. Add Item",
