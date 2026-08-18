@@ -1,3 +1,5 @@
+import ITEM_TYPES from "./data/itemTypes.js";
+
 const inventory = [];
 const MAX_CARRY_WEIGHT = 20;
 let currentWeapon = null;
@@ -55,7 +57,7 @@ function viewItemDetails(name) {
 
 function selectWeapon(name) {
     const weapon = inventory.find(item => {
-        return item.name === name && item.type === "weapon";
+        return item.name === name && item.type === ITEM_TYPES.WEAPON;
     });
 
     if (!weapon) {

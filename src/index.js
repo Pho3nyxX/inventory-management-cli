@@ -1,6 +1,7 @@
-import { input } from "@inquirer/prompts";
+import { input, select } from "@inquirer/prompts";
 import showMenu from "./menu.js";
 import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon, viewCurrentWeapon, unequipWeapon, getMaxCarryWeight, getCurrentWeight, getRemainingCapacity, searchInventory } from "./inventory.js";
+import ITEM_TYPES from "./data/itemTypes.js";
 
 async function main() {
     let running = true;
@@ -13,8 +14,30 @@ async function main() {
                 message: "Enter item name:"
             });
 
-            const type = await input({
-                message: "Enter item type:"
+            const type = await select({
+                message: "Select item type:",
+                choices: [
+                    {
+                        name: "Weapon",
+                        value: ITEM_TYPES.WEAPON
+                    },
+                    {
+                        name: "Armor",
+                        value: ITEM_TYPES.ARMOR
+                    },
+                    {
+                        name: "Consumable",
+                        value: ITEM_TYPES.CONSUMABLE
+                    },
+                    {
+                        name: "Quest Item",
+                        value: ITEM_TYPES.QUEST
+                    },
+                    {
+                        name: "Miscellaneous",
+                        value: ITEM_TYPES.MISCELLANEOUS
+                    }
+                ]
             });
 
             const weight = await input({
