@@ -5,14 +5,25 @@ const MAX_CARRY_WEIGHT = 20;
 let currentWeapon = null;
 
 function addItem(name, type, weight, quantity, defense = 0, block = 0) {
-    const existingItem = inventory.find(item => item.name === name);
-    const itemWeight = weight * quantity;
-    const newTotalWeight = getCurrentWeight() + itemWeight;
+    const existingItem = inventory.find(item =>
+        item.name === name &&
+        item.type === type
+    );
 
     if (existingItem) {
-        existingItem.quantity++;
+        const additionalWeight = weight * quantity;
+        const newTotalWeight = getCurrentWeight() + additionalWeight;
+
+        if (newTotalWeight > MAX_CARRY_WEIGHT) {
+            return null;
+        }
+
+        existingItem.quantity += quantity;
         return existingItem;
     }
+
+    const itemWeight = weight * quantity;
+    const newTotalWeight = getCurrentWeight() + itemWeight;
 
     if (newTotalWeight > MAX_CARRY_WEIGHT) {
         return null;
@@ -32,7 +43,6 @@ function addItem(name, type, weight, quantity, defense = 0, block = 0) {
     };
 
     inventory.push(item);
-
     return item;
 }
 
@@ -89,7 +99,7 @@ function getMaxCarryWeight() {
     return MAX_CARRY_WEIGHT;
 }
 
-function getCurrentWeight(){
+function getCurrentWeight() {
     let totalWeight = 0;
 
     inventory.forEach(item => {
@@ -99,7 +109,7 @@ function getCurrentWeight(){
     return totalWeight;
 }
 
-function getRemainingCapacity(){
+function getRemainingCapacity() {
     return MAX_CARRY_WEIGHT - getCurrentWeight();
 }
 
