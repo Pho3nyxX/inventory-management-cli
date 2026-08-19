@@ -1,6 +1,6 @@
 import { input, select } from "@inquirer/prompts";
 import showMenu from "./menu.js";
-import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon, viewCurrentWeapon, unequipWeapon, getMaxCarryWeight, getCurrentWeight, getRemainingCapacity, searchInventory, equipItem, viewEquipment, unequipItem } from "./inventory.js";
+import { addItem, removeItem, viewInventory, viewItemDetails, getMaxCarryWeight, getCurrentWeight, getRemainingCapacity, searchInventory, equipItem, viewEquipment, unequipItem } from "./inventory.js";
 import ITEM_TYPES from "./data/itemTypes.js";
 
 async function main() {
@@ -164,46 +164,7 @@ async function main() {
             console.log();
         }
 
-        if (choice === "select") {
-            const name = await input({
-                message: "Enter the name of the weapon:"
-            });
-
-            const selected = selectWeapon(name);
-
-            if (selected) {
-                console.log(`\n${name} selected.\n`);
-            } else {
-                console.log(`\n${name} is not a weapon in your inventory.\n`);
-            }
-        }
-
-        if (choice === "current") {
-            const weapon = viewCurrentWeapon();
-
-            if (!weapon) {
-                console.log("\nNo weapon is currently selected.\n");
-            } else {
-                console.log("\n=== Current Weapon ===");
-                console.log(`Name: ${weapon.name}`);
-                console.log(`Type: ${weapon.type}`);
-                console.log(`Quantity: ${weapon.quantity}`);
-            }
-
-            console.log();
-        }
-
-        if (choice === "unequip") {
-            const unequipped = unequipWeapon();
-
-            if (unequipped) {
-                console.log("\nWeapon unequipped.\n");
-            } else {
-                console.log("\nNo weapon is currently equipped.\n");
-            }
-        }
-
-        if (choice === "equipment") {
+        if (choice === "equip-item") {
             const name = await input({
                 message: "Enter item name to equip:"
             });

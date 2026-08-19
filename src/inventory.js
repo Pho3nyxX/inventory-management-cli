@@ -71,34 +71,6 @@ function viewItemDetails(name) {
     return item;
 }
 
-function selectWeapon(name) {
-    const weapon = inventory.find(item => {
-        return item.name === name && item.type === ITEM_TYPES.WEAPON;
-    });
-
-    if (!weapon) {
-        return false;
-    }
-
-    currentWeapon = weapon;
-
-    return true;
-}
-
-function viewCurrentWeapon() {
-    return currentWeapon;
-}
-
-function unequipWeapon() {
-    if (!currentWeapon) {
-        return false;
-    }
-
-    currentWeapon = null;
-
-    return true;
-}
-
 function getMaxCarryWeight() {
     return MAX_CARRY_WEIGHT;
 }
@@ -180,9 +152,6 @@ export {
     removeItem,
     viewInventory,
     viewItemDetails,
-    selectWeapon,
-    viewCurrentWeapon,
-    unequipWeapon,
     getMaxCarryWeight,
     getCurrentWeight,
     getRemainingCapacity,

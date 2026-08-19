@@ -27,27 +27,15 @@ async function showMenu() {
                 value: "details"
             },
             {
-                name: "6. Select Weapon",
-                value: "select"
+                name: "6. Equip Item",
+                value: "equip-item"
             },
             {
-                name: "7. View Current Weapon",
-                value: "current"
-            },
-            {
-                name: "8. Unequip Weapon",
-                value: "unequip"
-            },
-            {
-                name: "9. Equipment",
-                value: "equipment"
-            },
-            {
-                name: "10. View Equipment",
+                name: "7. View Equipment",
                 value: "view-equipment"
             },
             {
-                name: "11. Unequip Item",
+                name: "8. Unequip Item",
                 value: "unequip-item"
             },
             {
