@@ -45,7 +45,27 @@ function addItem(name, type, weight, quantity, attack = 0, defense = 0, block = 
 
         getInfo() {
             return `${this.name} (${this.type}) x${this.quantity} - ${this.weight}kg each`;
-        }
+        },
+
+        getTotalWeight() {
+            return this.weight * this.quantity;
+        },
+
+        isEquippable() {
+            return (
+                this.type === ITEM_TYPES.WEAPON ||
+                this.type === ITEM_TYPES.ARMOR ||
+                this.type === ITEM_TYPES.SHIELD
+            );
+        },
+
+        getStats() {
+            return {
+                attack: this.attack,
+                defense: this.defense,
+                block: this.block
+            };
+        },
     };
 
     inventory.push(item);
@@ -81,7 +101,7 @@ function getCurrentWeight() {
     let totalWeight = 0;
 
     inventory.forEach(item => {
-        totalWeight += item.weight * item.quantity;
+         totalWeight += item.getTotalWeight();
     })
 
     return totalWeight;
@@ -130,17 +150,17 @@ function viewEquipment() {
 }
 
 function unequipItem(name) {
-    if (equipment.weapon?.name === name ) {
+    if (equipment.weapon?.name === name) {
         equipment.weapon = null;
         return true;
     }
 
-    if (equipment.armor?.name === name ) {
+    if (equipment.armor?.name === name) {
         equipment.armor = null;
         return true;
     }
 
-    if (equipment.shield?.name === name ) {
+    if (equipment.shield?.name === name) {
         equipment.shield = null;
         return true;
     }
