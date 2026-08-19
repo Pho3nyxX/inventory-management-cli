@@ -2,6 +2,7 @@ import { input, select } from "@inquirer/prompts";
 import showMenu from "./menu.js";
 import { addItem, removeItem, viewInventory, viewItemDetails, getMaxCarryWeight, getCurrentWeight, getRemainingCapacity, searchInventory, equipItem, viewEquipment, unequipItem } from "./inventory.js";
 import ITEM_TYPES from "./data/itemTypes.js";
+import { getPlayerStats } from "./playerStats.js";
 
 async function main() {
     let running = true;
@@ -46,6 +47,13 @@ async function main() {
 
             let defense = 0;
             let block = 0;
+            let attack = 0;
+
+            if (type === ITEM_TYPES.WEAPON) {
+                attack = Number(await input({
+                    message: "Enter weapon attack:"
+                }));
+            }
 
             if (type === ITEM_TYPES.ARMOR) {
                 defense = Number(await input({
@@ -72,6 +80,7 @@ async function main() {
                 type,
                 Number(weight),
                 Number(quantity),
+                attack,
                 defense,
                 block
             );
@@ -208,6 +217,17 @@ async function main() {
             } else {
                 console.log(`\n${name} unequipped.`);
             }
+        }
+
+        if (choice === "player-stats") {
+            const stats = getPlayerStats();
+
+            console.log("\n=== Player Stats ===");
+
+            console.log(`Health: ${stats.health}`);
+            console.log(`Attack: ${stats.attack}`);
+            console.log(`Defense: ${stats.defense}`);
+            console.log(`Block: ${stats.block}`);
         }
 
         if (choice === "exit") {

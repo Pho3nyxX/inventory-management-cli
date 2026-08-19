@@ -39,6 +39,10 @@ async function showMenu() {
                 value: "unequip-item"
             },
             {
+                name: "View Player Stats",
+                value: "player-stats"
+            },
+            {
                 name: "Exit",
                 value: "exit"
             }

@@ -1,4 +1,5 @@
 import ITEM_TYPES from "./data/itemTypes.js";
+import playerStats from "./playerStats.js";
 
 const inventory = [];
 const MAX_CARRY_WEIGHT = 20;
@@ -8,7 +9,7 @@ const equipment = {
     shield: null
 };
 
-function addItem(name, type, weight, quantity, defense = 0, block = 0) {
+function addItem(name, type, weight, quantity, attack = 0, defense = 0, block = 0) {
     const existingItem = inventory.find(item =>
         item.name === name &&
         item.type === type
@@ -38,6 +39,7 @@ function addItem(name, type, weight, quantity, defense = 0, block = 0) {
         type,
         quantity,
         weight,
+        attack,
         defense,
         block,
 
@@ -158,5 +160,5 @@ export {
     searchInventory,
     equipItem,
     viewEquipment,
-    unequipItem
+    unequipItem,
 };
