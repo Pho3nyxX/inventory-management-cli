@@ -2,7 +2,11 @@ import ITEM_TYPES from "./data/itemTypes.js";
 
 const inventory = [];
 const MAX_CARRY_WEIGHT = 20;
-let currentWeapon = null;
+const equipment = {
+    weapon: null,
+    armor: null,
+    shield: null
+};
 
 function addItem(name, type, weight, quantity, defense = 0, block = 0) {
     const existingItem = inventory.find(item =>
@@ -119,6 +123,38 @@ function searchInventory(searchTerm) {
     );
 }
 
+function equipItem(name) {
+    const item = inventory.find(item => item.name === name);
+
+    if (!item) {
+        return false;
+    }
+
+    if (item.type !== ITEM_TYPES.WEAPON && item.type !== ITEM_TYPES.ARMOR &&
+        item.type !== ITEM_TYPES.SHIELD
+    ) {
+        return false;
+    }
+
+    if (item.type === ITEM_TYPES.WEAPON) {
+        equipment.weapon = item;
+    }
+
+    if (item.type === ITEM_TYPES.ARMOR) {
+        equipment.armor = item;
+    }
+
+    if (item.type === ITEM_TYPES.SHIELD) {
+        equipment.shield = item;
+    }
+
+    return true;
+}
+
+function viewEquipment() {
+    return equipment;
+}
+
 export {
     inventory,
     addItem,
@@ -131,5 +167,7 @@ export {
     getMaxCarryWeight,
     getCurrentWeight,
     getRemainingCapacity,
-    searchInventory
+    searchInventory,
+    equipItem,
+    viewEquipment    
 };

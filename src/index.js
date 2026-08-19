@@ -1,6 +1,6 @@
 import { input, select } from "@inquirer/prompts";
 import showMenu from "./menu.js";
-import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon, viewCurrentWeapon, unequipWeapon, getMaxCarryWeight, getCurrentWeight, getRemainingCapacity, searchInventory } from "./inventory.js";
+import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon, viewCurrentWeapon, unequipWeapon, getMaxCarryWeight, getCurrentWeight, getRemainingCapacity, searchInventory, equipItem, viewEquipment } from "./inventory.js";
 import ITEM_TYPES from "./data/itemTypes.js";
 
 async function main() {
@@ -201,6 +201,38 @@ async function main() {
             } else {
                 console.log("\nNo weapon is currently equipped.\n");
             }
+        }
+
+        if (choice === "equipment") {
+            const name = await input({
+                message: "Enter item name to equip:"
+            });
+
+            const equipped = equipItem(name);
+
+            if (!equipped) {
+                console.log("\nItem cannot be equipped.");
+            } else {
+                console.log(`\n${name} equipped.`);
+            }
+        }
+
+        if (choice === "view-equipment") {
+            const currentEquipment = viewEquipment();
+
+            console.log("\n=== Equipment ===");
+
+            console.log(
+                `Weapon: ${currentEquipment.weapon?.name ?? "None"}`
+            );
+
+            console.log(
+                `Armor: ${currentEquipment.armor?.name ?? "None"}`
+            );
+
+            console.log(
+                `Shield: ${currentEquipment.shield?.name ?? "None"}`
+            );
         }
 
         if (choice === "exit") {
