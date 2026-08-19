@@ -4,7 +4,7 @@ const inventory = [];
 const MAX_CARRY_WEIGHT = 20;
 let currentWeapon = null;
 
-function addItem(name, type, weight, quantity, defense = 0) {
+function addItem(name, type, weight, quantity, defense = 0, block = 0) {
     const existingItem = inventory.find(item => item.name === name);
     const itemWeight = weight * quantity;
     const newTotalWeight = getCurrentWeight() + itemWeight;
@@ -24,6 +24,7 @@ function addItem(name, type, weight, quantity, defense = 0) {
         quantity,
         weight,
         defense,
+        block,
 
         getInfo() {
             return `${this.name} (${this.type}) x${this.quantity} - ${this.weight}kg each`;

@@ -26,6 +26,10 @@ async function main() {
                         value: ITEM_TYPES.ARMOR
                     },
                     {
+                        name: "Shield",
+                        value: ITEM_TYPES.SHIELD
+                    },
+                    {
                         name: "Consumable",
                         value: ITEM_TYPES.CONSUMABLE
                     },
@@ -41,10 +45,17 @@ async function main() {
             });
 
             let defense = 0;
+            let block = 0;
 
             if (type === ITEM_TYPES.ARMOR) {
                 defense = Number(await input({
                     message: "Enter armor defense:"
+                }));
+            }
+
+            if (type === ITEM_TYPES.SHIELD) {
+                block = Number(await input({
+                    message: "Enter shield block:"
                 }));
             }
 
@@ -61,7 +72,8 @@ async function main() {
                 type,
                 Number(weight),
                 Number(quantity),
-                defense
+                defense,
+                block
             );
 
             if (!item) {
@@ -140,9 +152,13 @@ async function main() {
                 console.log(`Quantity: ${item.quantity}`);
                 console.log(`Weight: ${item.weight}kg`);
             }
-            
-            if(item.type === ITEM_TYPES.ARMOR){
+
+            if (item.type === ITEM_TYPES.ARMOR) {
                 console.log(`Defense: ${item.defense}`);
+            }
+
+            if (item.type === ITEM_TYPES.SHIELD) {
+                console.log(`Block: ${item.block}`);
             }
 
             console.log();
