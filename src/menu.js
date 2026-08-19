@@ -47,6 +47,10 @@ async function showMenu() {
                 value: "view-equipment"
             },
             {
+                name: "11. Unequip Item",
+                value: "unequip-item"
+            },
+            {
                 name: "Exit",
                 value: "exit"
             }

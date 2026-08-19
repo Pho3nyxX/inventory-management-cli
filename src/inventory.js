@@ -155,6 +155,25 @@ function viewEquipment() {
     return equipment;
 }
 
+function unequipItem(name) {
+    if (equipment.weapon?.name === name ) {
+        equipment.weapon = null;
+        return true;
+    }
+
+    if (equipment.armor?.name === name ) {
+        equipment.armor = null;
+        return true;
+    }
+
+    if (equipment.shield?.name === name ) {
+        equipment.shield = null;
+        return true;
+    }
+
+    return false;
+}
+
 export {
     inventory,
     addItem,
@@ -169,5 +188,6 @@ export {
     getRemainingCapacity,
     searchInventory,
     equipItem,
-    viewEquipment    
+    viewEquipment,
+    unequipItem
 };

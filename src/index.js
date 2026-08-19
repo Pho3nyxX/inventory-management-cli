@@ -1,6 +1,6 @@
 import { input, select } from "@inquirer/prompts";
 import showMenu from "./menu.js";
-import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon, viewCurrentWeapon, unequipWeapon, getMaxCarryWeight, getCurrentWeight, getRemainingCapacity, searchInventory, equipItem, viewEquipment } from "./inventory.js";
+import { addItem, removeItem, viewInventory, viewItemDetails, selectWeapon, viewCurrentWeapon, unequipWeapon, getMaxCarryWeight, getCurrentWeight, getRemainingCapacity, searchInventory, equipItem, viewEquipment, unequipItem } from "./inventory.js";
 import ITEM_TYPES from "./data/itemTypes.js";
 
 async function main() {
@@ -233,6 +233,20 @@ async function main() {
             console.log(
                 `Shield: ${currentEquipment.shield?.name ?? "None"}`
             );
+        }
+
+        if (choice === "unequip-item") {
+            const name = await input({
+                message: "Enter item name to unequip:"
+            });
+
+            const unequipped = unequipItem(name);
+
+            if (!unequipped) {
+                console.log("\nItem is not currently equipped.");
+            } else {
+                console.log(`\n${name} unequipped.`);
+            }
         }
 
         if (choice === "exit") {
