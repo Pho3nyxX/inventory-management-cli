@@ -1,5 +1,6 @@
 import ITEM_TYPES from "./data/itemTypes.js";
 import playerStats from "./playerStats.js";
+import Item from "./item.js";
 
 const inventory = [];
 const MAX_CARRY_WEIGHT = 20;
@@ -34,39 +35,15 @@ function addItem(name, type, weight, quantity, attack = 0, defense = 0, block = 
         return null;
     }
 
-    const item = {
+    const item = new Item(
         name,
         type,
         quantity,
         weight,
         attack,
         defense,
-        block,
-
-        getInfo() {
-            return `${this.name} (${this.type}) x${this.quantity} - ${this.weight}kg each`;
-        },
-
-        getTotalWeight() {
-            return this.weight * this.quantity;
-        },
-
-        isEquippable() {
-            return (
-                this.type === ITEM_TYPES.WEAPON ||
-                this.type === ITEM_TYPES.ARMOR ||
-                this.type === ITEM_TYPES.SHIELD
-            );
-        },
-
-        getStats() {
-            return {
-                attack: this.attack,
-                defense: this.defense,
-                block: this.block
-            };
-        },
-    };
+        block
+    );
 
     inventory.push(item);
     return item;

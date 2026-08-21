@@ -1,4 +1,4 @@
-const  ITEM_TYPES = {
+const ITEM_TYPES = {
     WEAPON: "weapon",
     ARMOR: "armor",
     SHIELD: "shield",
