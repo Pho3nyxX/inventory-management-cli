@@ -4,6 +4,8 @@ import { addItem, removeItem, viewInventory, viewItemDetails, getMaxCarryWeight,
 import ITEM_TYPES from "./data/itemTypes.js";
 import { getPlayerStats } from "./playerStats.js";
 import { getGold } from "./player.js";
+import { buyItem, sellItem } from "./shop.js";
+import shopItems from "./data/shopItems.js";
 
 async function main() {
     let running = true;
@@ -235,9 +237,43 @@ async function main() {
             console.log(`\nGold: ${getGold()}`);
         }
 
+        if (choice === "buy-item") {
+            const itemName = await select({
+                message: "What would you like to buy?",
+                choices: shopItems.map(item => ({
+                    name: `${item.name} - ${item.price} gold`,
+                    value: item.name
+                }))
+            });
+
+            const result = buyItem(itemName);
+
+            console.log(`\n${result.message}`);
+        }
+
+        if (choice === "sell-item") {
+            const inventory = viewInventory();
+
+            if (inventory.length === 0) {
+                console.log("\nYour inventory is empty.");
+            } else {
+                const itemName = await select({
+                    message: "What would you like to sell?",
+                    choices: inventory.map(item => ({
+                        name: `${item.name} - ${Math.floor(item.price / 2)} gold`,
+                        value: item.name
+                    }))
+                });
+
+                const result = sellItem(itemName);
+
+                console.log(`\n${result.message}`);
+            }
+        }
+
         if (choice === "exit") {
             running = false;
-        }  
+        }
     }
 
     console.log("\n👋 Until next time!");

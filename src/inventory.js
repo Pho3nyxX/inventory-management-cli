@@ -10,7 +10,7 @@ const equipment = {
     shield: null
 };
 
-function addItem(name, type, weight, quantity, attack = 0, defense = 0, block = 0) {
+function addItem(name, type, weight, quantity, attack = 0, defense = 0, block = 0, price = 0) {
     const existingItem = inventory.find(item =>
         item.name === name &&
         item.type === type
@@ -42,21 +42,32 @@ function addItem(name, type, weight, quantity, attack = 0, defense = 0, block = 
         weight,
         attack,
         defense,
-        block
+        block,
+        price
     );
 
     inventory.push(item);
     return item;
 }
 
-function removeItem(name) {
+function removeItem(name, quantity = 1) {
     const itemIndex = inventory.findIndex(item => item.name === name);
 
     if (itemIndex === -1) {
         return false;
     }
 
-    inventory.splice(itemIndex, 1);
+    const item = inventory[itemIndex];
+
+    if (quantity > item.quantity) {
+        return false;
+    }
+
+    item.quantity -= quantity;
+
+    if (item.quantity === 0) {
+        inventory.splice(itemIndex, 1);
+    }
 
     return true;
 }
@@ -78,7 +89,7 @@ function getCurrentWeight() {
     let totalWeight = 0;
 
     inventory.forEach(item => {
-         totalWeight += item.getTotalWeight();
+        totalWeight += item.getTotalWeight();
     })
 
     return totalWeight;

@@ -47,6 +47,14 @@ async function showMenu() {
                 value: "view-gold"
             },
             {
+                name: "11. Buy Item",
+                value: "buy-item"
+            },
+            {
+                name: "12. Sell Item",
+                value: "sell-item"
+            },
+            {
                 name: "Exit",
                 value: "exit"
             }
