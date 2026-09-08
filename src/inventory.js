@@ -10,7 +10,7 @@ const equipment = {
     shield: null
 };
 
-function addItem(name, type, weight, quantity, attack = 0, defense = 0, block = 0, price = 0, rarity = "Common") {
+function addItem(name, type, weight, quantity, attack = 0, defense = 0, block = 0, price = 0, rarity = "Common", durability = 100) {
     const existingItem = inventory.find(item =>
         item.name === name &&
         item.type === type
@@ -44,7 +44,8 @@ function addItem(name, type, weight, quantity, attack = 0, defense = 0, block = 
         defense,
         block,
         price,
-        rarity
+        rarity,
+        durability
     );
 
     inventory.push(item);

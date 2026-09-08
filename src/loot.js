@@ -20,7 +20,8 @@ function findLoot() {
         loot.defense,
         loot.block,
         loot.price,
-        loot.rarity
+        loot.rarity,
+        loot.durability
     );
 
     if (!item) {
@@ -33,7 +34,7 @@ function findLoot() {
     return {
         success: true,
         item,
-        message: `You found ${loot.name} (${loot.rarity})!`
+        message: `You found ${loot.name} (${loot.rarity}) - Durability: ${loot.durability}/${loot.durability}!`
     };
 }
 
