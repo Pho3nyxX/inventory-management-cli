@@ -59,6 +59,10 @@ async function showMenu() {
                 value: "find-loot"
             },
             {
+                name: "14. Open Loot Chest",
+                value: "open-chest"
+            },
+            {
                 name: "Exit",
                 value: "exit"
             }

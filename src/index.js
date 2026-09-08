@@ -7,6 +7,7 @@ import { getGold } from "./player.js";
 import { buyItem, sellItem } from "./shop.js";
 import shopItems from "./data/shopItems.js";
 import { findLoot } from "./loot.js";
+import { openChest } from "./chest.js";
 
 async function main() {
     let running = true;
@@ -274,6 +275,12 @@ async function main() {
 
         if (choice === "find-loot") {
             const result = findLoot();
+
+            console.log(`\n${result.message}`);
+        }
+
+        if (choice === "open-chest") {
+            const result = openChest();
 
             console.log(`\n${result.message}`);
         }
