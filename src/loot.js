@@ -1,5 +1,6 @@
 import lootItems from "./data/lootItems.js";
 import { addItem } from "./inventory.js";
+import rarityChances from "./data/rarityChances.js";
 
 function getRandomLoot() {
     const randomIndex = Math.floor(Math.random() * lootItems.length);
@@ -18,7 +19,8 @@ function findLoot() {
         loot.attack,
         loot.defense,
         loot.block,
-        loot.price
+        loot.price,
+        loot.rarity
     );
 
     if (!item) {
@@ -31,8 +33,23 @@ function findLoot() {
     return {
         success: true,
         item,
-        message: `You found ${loot.name}!`
+        message: `You found ${loot.name} (${loot.rarity})!`
     };
+}
+
+function getRandomRarity() {
+    const random = Math.random() * 100;
+    let cumulativeChance = 0;
+
+    for (const rarity of rarityChances) {
+        cumulativeChance += rarity.chance;
+
+        if (random < cumulativeChance) {
+            return rarity.rarity;
+        }
+    }
+
+    return rarityChances[0].rarity;
 }
 
 export {

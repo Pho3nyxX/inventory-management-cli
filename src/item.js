@@ -1,6 +1,6 @@
 import ITEM_TYPES from "./data/itemTypes.js";
 
-function Item(name, type, quantity, weight, attack = 0, defense = 0, block = 0, price = 0) {
+function Item(name, type, quantity, weight, attack = 0, defense = 0, block = 0, price = 0, rarity = "Common") {
     this.name = name;
     this.type = type;
     this.quantity = quantity;
@@ -9,6 +9,7 @@ function Item(name, type, quantity, weight, attack = 0, defense = 0, block = 0, 
     this.defense = defense;
     this.block = block;
     this.price = price;
+    this.rarity = rarity;
 
     this.getInfo = function () {
         return `${this.name} (${this.type}) x${this.quantity} - ${this.weight}kg each`;
