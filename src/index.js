@@ -8,6 +8,7 @@ import { buyItem, sellItem } from "./shop.js";
 import shopItems from "./data/shopItems.js";
 import { findLoot } from "./loot.js";
 import { openChest } from "./chest.js";
+import { repairItem } from "./repair.js";
 
 async function main() {
     let running = true;
@@ -281,6 +282,16 @@ async function main() {
 
         if (choice === "open-chest") {
             const result = openChest();
+
+            console.log(`\n${result.message}`);
+        }
+
+        if (choice === "repair-item") {
+            const itemName = await input({
+                message: "Enter the item you want to repair:"
+            });
+
+            const result = repairItem(itemName);
 
             console.log(`\n${result.message}`);
         }

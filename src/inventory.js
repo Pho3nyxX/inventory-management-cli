@@ -158,6 +158,33 @@ function unequipItem(name) {
     return false;
 }
 
+function repairItem(name) {
+    const item = inventory.find(item => item.name === name);
+
+    if (!item) {
+        return {
+            success: false,
+            message: "Item not found."
+        };
+    }
+
+    if (item.durability >= item.maxDurability) {
+        return {
+            success: false,
+            message: `${item.name} is already at full durability.`
+        };
+    }
+
+    const durabilityNeeded = item.maxDurability - item.durability;
+    const repairCost = durabilityNeeded;
+
+    return {
+        success: true,
+        item,
+        repairCost
+    };
+}
+
 export {
     inventory,
     addItem,

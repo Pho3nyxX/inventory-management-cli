@@ -63,6 +63,10 @@ async function showMenu() {
                 value: "open-chest"
             },
             {
+                name: "15. Repair Item",
+                value: "repair-item"
+            },
+            {
                 name: "Exit",
                 value: "exit"
             }
