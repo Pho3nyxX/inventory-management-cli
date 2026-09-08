@@ -9,6 +9,7 @@ import shopItems from "./data/shopItems.js";
 import { findLoot } from "./loot.js";
 import { openChest } from "./chest.js";
 import { repairItem } from "./repair.js";
+import { damageItem } from "./durability.js";
 
 async function main() {
     let running = true;

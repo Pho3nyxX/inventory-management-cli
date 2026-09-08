@@ -185,6 +185,39 @@ function repairItem(name) {
     };
 }
 
+function damageDurability(name, amount = 1) {
+    const item = inventory.find(item => item.name === name);
+
+    if (!item) {
+        return {
+            success: false,
+            message: "Item not found."
+        };
+    }
+
+    if (!item.isEquippable()) {
+        return {
+            success: false,
+            message: `${item.name} cannot lose durability.`
+        };
+    }
+
+    if (item.durability <= 0) {
+        return {
+            success: false,
+            message: `${item.name} is already broken.`
+        };
+    }
+
+    item.durability = Math.max(0, item.durability - amount);
+
+    return {
+        success: true,
+        item,
+        message: `${item.name} lost ${amount} durability.`
+    };
+}
+
 export {
     inventory,
     addItem,
@@ -198,4 +231,5 @@ export {
     equipItem,
     viewEquipment,
     unequipItem,
+    damageDurability
 };
