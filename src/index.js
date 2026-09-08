@@ -10,6 +10,7 @@ import { findLoot } from "./loot.js";
 import { openChest } from "./chest.js";
 import { repairItem } from "./repair.js";
 import { damageItem } from "./durability.js";
+import { saveGame, loadGame } from "./save.js";
 
 async function main() {
     let running = true;
@@ -299,6 +300,18 @@ async function main() {
 
         if (choice === "exit") {
             running = false;
+        }
+
+        if (choice === "save-game") {
+            const result = saveGame();
+
+            console.log(`\n${result.message}`);
+        }
+
+        if (choice === "load-game") {
+            const result = loadGame();
+
+            console.log(`\n${result.message}`);
         }
     }
 

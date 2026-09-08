@@ -218,6 +218,51 @@ function damageDurability(name, amount = 1) {
     };
 }
 
+function loadInventory(savedInventory) {
+    inventory.length = 0;
+
+    savedInventory.forEach(item => {
+        inventory.push(
+            new Item(
+                item.name,
+                item.type,
+                item.quantity,
+                item.weight,
+                item.attack,
+                item.defense,
+                item.block,
+                item.price,
+                item.rarity,
+                item.durability
+            )
+        );
+    });
+}
+
+function loadEquipment(savedEquipment) {
+    equipment.weapon = null;
+    equipment.armor = null;
+    equipment.shield = null;
+
+    if (savedEquipment.weapon) {
+        equipment.weapon = inventory.find(
+            item => item.name === savedEquipment.weapon.name
+        );
+    }
+
+    if (savedEquipment.armor) {
+        equipment.armor = inventory.find(
+            item => item.name === savedEquipment.armor.name
+        );
+    }
+
+    if (savedEquipment.shield) {
+        equipment.shield = inventory.find(
+            item => item.name === savedEquipment.shield.name
+        );
+    }
+}
+
 export {
     inventory,
     addItem,
@@ -231,5 +276,7 @@ export {
     equipItem,
     viewEquipment,
     unequipItem,
-    damageDurability
+    damageDurability,
+    loadInventory,
+    loadEquipment
 };

@@ -67,6 +67,14 @@ async function showMenu() {
                 value: "repair-item"
             },
             {
+                name: "16. Save Game",
+                value: "save-game"
+            },
+            {
+                name: "17. Load Game",
+                value: "load-game"
+            },
+            {
                 name: "Exit",
                 value: "exit"
             }

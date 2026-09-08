@@ -18,8 +18,13 @@ function removeGold(amount) {
     return true;
 }
 
+function loadGold(savedGold) {
+    gold = savedGold;
+}
+
 export {
     getGold,
     addGold,
-    removeGold
+    removeGold,
+    loadGold
 };
