@@ -6,6 +6,7 @@ import { getPlayerStats } from "./playerStats.js";
 import { getGold } from "./player.js";
 import { buyItem, sellItem } from "./shop.js";
 import shopItems from "./data/shopItems.js";
+import { findLoot } from "./loot.js";
 
 async function main() {
     let running = true;
@@ -269,6 +270,12 @@ async function main() {
 
                 console.log(`\n${result.message}`);
             }
+        }
+
+        if (choice === "find-loot") {
+            const result = findLoot();
+
+            console.log(`\n${result.message}`);
         }
 
         if (choice === "exit") {

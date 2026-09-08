@@ -55,6 +55,10 @@ async function showMenu() {
                 value: "sell-item"
             },
             {
+                name: "13. Find Loot",
+                value: "find-loot"
+            },
+            {
                 name: "Exit",
                 value: "exit"
             }
