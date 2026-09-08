@@ -39,8 +39,12 @@ async function showMenu() {
                 value: "unequip-item"
             },
             {
-                name: "View Player Stats",
+                name: "9. View Player Stats",
                 value: "player-stats"
+            },
+            {
+                name: "10. View Gold",
+                value: "view-gold"
             },
             {
                 name: "Exit",

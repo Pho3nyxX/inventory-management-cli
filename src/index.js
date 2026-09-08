@@ -3,6 +3,7 @@ import showMenu from "./menu.js";
 import { addItem, removeItem, viewInventory, viewItemDetails, getMaxCarryWeight, getCurrentWeight, getRemainingCapacity, searchInventory, equipItem, viewEquipment, unequipItem } from "./inventory.js";
 import ITEM_TYPES from "./data/itemTypes.js";
 import { getPlayerStats } from "./playerStats.js";
+import { getGold } from "./player.js";
 
 async function main() {
     let running = true;
@@ -230,9 +231,13 @@ async function main() {
             console.log(`Block: ${stats.block}`);
         }
 
+        if (choice === "view-gold") {
+            console.log(`\nGold: ${getGold()}`);
+        }
+
         if (choice === "exit") {
             running = false;
-        }
+        }  
     }
 
     console.log("\n👋 Until next time!");
