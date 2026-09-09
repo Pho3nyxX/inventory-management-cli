@@ -1,6 +1,18 @@
 import { input, select } from "@inquirer/prompts";
 import showMenu from "./menu.js";
-import { addItem, removeItem, viewInventory, viewItemDetails, getMaxCarryWeight, getCurrentWeight, getRemainingCapacity, searchInventory, equipItem, viewEquipment, unequipItem } from "./inventory.js";
+import {
+    addItem,
+    removeItem,
+    viewInventory,
+    viewItemDetails,
+    getMaxCarryWeight,
+    getCurrentWeight,
+    getRemainingCapacity,
+    searchInventory,
+    equipItem,
+    viewEquipment,
+    unequipItem
+} from "./inventory.js";
 import ITEM_TYPES from "./data/itemTypes.js";
 import { getPlayerStats } from "./playerStats.js";
 import { getGold } from "./player.js";
